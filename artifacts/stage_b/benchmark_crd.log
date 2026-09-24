@@ -1,0 +1,4 @@
+teacher {'sha256': '22aa12e2b632b19ddde155ccf2388671842ddd304824b3095e0a7fff364beb4f', 'source_url': 'http://shape2prog.csail.mit.edu/repo/resnet32x4_vanilla/ckpt_epoch_240.pth', 'architecture': 'resnet32x4', 'top1': 79.42, 'top5': 94.58, 'ce': 0.8833264050483703, 'n': 10000, 'evaluation_seconds': 3.841510300000664}
+normalization constant Z_v1 is set to 110497.9
+normalization constant Z_v2 is set to 111062.9
+{'epoch': 1, 'global_step': 30, 'ce': 4.5444540023803714, 'kd': 10.488612111409505, 'crd': 22.908020401000975, 'total': 22.870870717366536, 'train_top1': 3.3333333333333335, 'test_top1': 3.8, 'test_top5': 14.99, 'test_ce': 5.148728679656982, 'test_n': 10000, 'lr': 0.05, 'seconds': 5.758908800024074, 'train_seconds': 3.7764482999918982, 'train_n': 1920, 'best_top1': 3.8, 'peak_memory_bytes': 1446451200}

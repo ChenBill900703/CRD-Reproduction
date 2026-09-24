@@ -1,0 +1,16 @@
+{
+  "global_step": 187680,
+  "train_n": 50000,
+  "test_n": 10000,
+  "code_fingerprint": "27e60ccb61ef506c10e0ceeaea910e687cd3b8be69e45672147aa110f18d979e",
+  "status": "complete",
+  "config": "E:\\Contrastive Representation Distillation\\runs\\author_code_vanilla_seed4_trial1\\config.json",
+  "epoch": 240,
+  "final_top1": 72.86,
+  "final_top5": 93.06,
+  "best_top1": 73.1,
+  "elapsed_seconds": 6737.148935099984,
+  "peak_memory_bytes": 347317760,
+  "teacher": {},
+  "checkpoint": "E:\\Contrastive Representation Distillation\\runs\\author_code_vanilla_seed4_trial1\\resume.pt"
+}

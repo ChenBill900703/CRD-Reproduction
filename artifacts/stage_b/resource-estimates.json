@@ -1,0 +1,66 @@
+{
+  "measured_runs": [
+    {
+      "method": "vanilla",
+      "train30_seconds": 1.3259267999674194,
+      "test10000_seconds": 1.9601326000411063,
+      "projected_epoch_seconds": 36.52262451919184,
+      "projected_240_hours": 2.434841634612789,
+      "peak_allocated_gib": 0.32346487045288086,
+      "resume_bytes": 9935731,
+      "student_bytes": 4965532,
+      "final_top1": 4.06,
+      "final_top5": 14.03
+    },
+    {
+      "method": "kd",
+      "train30_seconds": 1.409881699946709,
+      "test10000_seconds": 1.9980812000576407,
+      "projected_epoch_seconds": 38.74899751200185,
+      "projected_240_hours": 2.583266500800123,
+      "peak_allocated_gib": 0.38756322860717773,
+      "resume_bytes": 9936051,
+      "student_bytes": 4965532,
+      "final_top1": 3.83,
+      "final_top5": 15.56
+    },
+    {
+      "method": "crd",
+      "train30_seconds": 3.7764482999918982,
+      "test10000_seconds": 1.9824605000321753,
+      "projected_epoch_seconds": 100.42187951982099,
+      "projected_240_hours": 6.694791967988066,
+      "peak_allocated_gib": 1.3471126556396484,
+      "resume_bytes": 61666074,
+      "student_bytes": 4965532,
+      "final_top1": 3.8,
+      "final_top5": 14.99
+    },
+    {
+      "method": "crd_kd",
+      "train30_seconds": 3.851812799985055,
+      "test10000_seconds": 2.020358000008855,
+      "projected_epoch_seconds": 102.42427831961929,
+      "projected_240_hours": 6.828285221307953,
+      "peak_allocated_gib": 1.3471126556396484,
+      "resume_bytes": 61666074,
+      "student_bytes": 4965532,
+      "final_top1": 3.4,
+      "final_top5": 14.83
+    }
+  ],
+  "baseline20_projected_hours": 92.70592662354466,
+  "paper_tau10_projected_hours": 67.61538594648009,
+  "total30_projected_hours": 160.32131257002476,
+  "planned_buffer_hours": [
+    200.40164071253093,
+    240.48196885503714
+  ],
+  "formula": "(train30_seconds / 30 * 782 + test10000_seconds) * 240 / 3600",
+  "caveats": [
+    "Extrapolation from 30 steps, NOT measured 240-epoch runtime",
+    "Excludes startup and checkpoint I/O",
+    "paper_tau throughput assumed equal, not timed on real data",
+    "workers=0, FP32; no training setting changed based on test results"
+  ]
+}

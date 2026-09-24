@@ -1,0 +1,17 @@
+[
+  {
+    "file": "E:\\Contrastive Representation Distillation\\data\\cifar-100-python\\train",
+    "bytes": 155249918,
+    "md5": "16019d7e3df5f24257cddd939b257f8d"
+  },
+  {
+    "file": "E:\\Contrastive Representation Distillation\\data\\cifar-100-python\\test",
+    "bytes": 31049707,
+    "md5": "f0ef6b0ae62326f3e7ffdfab6717acfc"
+  },
+  {
+    "file": "E:\\Contrastive Representation Distillation\\data\\cifar-100-python\\meta",
+    "bytes": 1473,
+    "md5": "7973b15100ade9c7d40fb424638fde48"
+  }
+]

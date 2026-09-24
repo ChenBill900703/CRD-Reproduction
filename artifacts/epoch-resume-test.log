@@ -1,0 +1,8 @@
+normalization constant Z_v1 is set to 99767.3
+test_epoch_boundary_loader_resume (__main__.Semantics.test_epoch_boundary_loader_resume) ... ok
+normalization constant Z_v2 is set to 77459.6
+
+----------------------------------------------------------------------
+Ran 1 test in 3.428s
+
+OK

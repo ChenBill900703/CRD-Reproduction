@@ -1,0 +1,17 @@
+.venv*/
+data/
+assets/
+tmp/
+*.pdf
+*.pt
+*.pth
+*.tar.gz
+*.zip
+__pycache__/
+*.pyc
+*.tmp
+.run.lock
+reference/RepDistiller/.git/
+artifacts/formal/recovery-*/
+artifacts/formal/pause-*/
+release-assets/

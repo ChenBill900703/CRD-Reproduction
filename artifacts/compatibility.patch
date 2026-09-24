@@ -1,0 +1,88 @@
+--- reference/train_student.py
++++ reproduction/train_student.py
+@@ -8,6 +8,12 @@
+ import argparse
+ import socket
+ import time
++
++# Executable route is intentionally scoped; original implementation is preserved below.
++if __name__ == '__main__':
++    from reproduce import main
++    main(expected_vanilla=False)
++    raise SystemExit(0)
+ 
+ import tensorboard_logger as tb_logger
+ import torch
+--- reference/train_teacher.py
++++ reproduction/train_teacher.py
+@@ -4,6 +4,12 @@
+ import argparse
+ import socket
+ import time
++
++# Executable route is intentionally scoped; original implementation is preserved below.
++if __name__ == '__main__':
++    from reproduce import main
++    main(expected_vanilla=True)
++    raise SystemExit(0)
+ 
+ import tensorboard_logger as tb_logger
+ import torch
+--- reference/dataset/cifar100.py
++++ reproduction/dataset/cifar100.py
+@@ -107,11 +107,11 @@
+ 
+         num_classes = 100
+         if self.train:
+-            num_samples = len(self.train_data)
+-            label = self.train_labels
++            num_samples = len(self.data)
++            label = self.targets
+         else:
+-            num_samples = len(self.test_data)
+-            label = self.test_labels
++            num_samples = len(self.data)
++            label = self.targets
+ 
+         self.cls_positive = [[] for i in range(num_classes)]
+         for i in range(num_samples):
+@@ -137,9 +137,9 @@
+ 
+     def __getitem__(self, index):
+         if self.train:
+-            img, target = self.train_data[index], self.train_labels[index]
++            img, target = self.data[index], self.targets[index]
+         else:
+-            img, target = self.test_data[index], self.test_labels[index]
++            img, target = self.data[index], self.targets[index]
+ 
+         # doing this so that it is consistent with all other datasets
+         # to return a PIL Image
+--- reference/crd/memory.py
++++ reproduction/crd/memory.py
+@@ -12,7 +12,6 @@
+         self.nLem = outputSize
+         self.unigrams = torch.ones(self.nLem)
+         self.multinomial = AliasMethod(self.unigrams)
+-        self.multinomial.cuda()
+         self.K = K
+ 
+         self.register_buffer('params', torch.tensor([K, T, -1, -1, momentum]))
+@@ -33,6 +32,8 @@
+ 
+         # original score computation
+         if idx is None:
++            self.multinomial.prob = self.multinomial.prob.to(v1.device)
++            self.multinomial.alias = self.multinomial.alias.to(v1.device)
+             idx = self.multinomial.draw(batchSize * (self.K + 1)).view(batchSize, -1)
+             idx.select(1, 0).copy_(y.data)
+         # sample
+--- reference/distiller_zoo/KD.py
++++ reproduction/distiller_zoo/KD.py
+@@ -13,5 +13,5 @@
+     def forward(self, y_s, y_t):
+         p_s = F.log_softmax(y_s/self.T, dim=1)
+         p_t = F.softmax(y_t/self.T, dim=1)
+-        loss = F.kl_div(p_s, p_t, size_average=False) * (self.T**2) / y_s.shape[0]
++        loss = F.kl_div(p_s, p_t, reduction="sum") * (self.T**2) / y_s.shape[0]
+         return loss

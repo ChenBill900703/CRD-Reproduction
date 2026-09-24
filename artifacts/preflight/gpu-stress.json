@@ -1,0 +1,28 @@
+[
+  {
+    "tau": 0.07,
+    "steps": 24,
+    "batch": 64,
+    "K": 16384,
+    "n_data": 50000,
+    "seconds": 1.3860325000132434,
+    "peak_allocated_bytes": 1477264384,
+    "steady_allocated_growth_bytes": 0,
+    "loss_first": 26.912614822387695,
+    "loss_last": 7.814304351806641,
+    "data": "synthetic; NOT benchmark accuracy"
+  },
+  {
+    "tau": 0.1,
+    "steps": 24,
+    "batch": 64,
+    "K": 16384,
+    "n_data": 50000,
+    "seconds": 1.1672282999497838,
+    "peak_allocated_bytes": 1477264384,
+    "steady_allocated_growth_bytes": 0,
+    "loss_first": 25.939306259155273,
+    "loss_last": 8.93948745727539,
+    "data": "synthetic; NOT benchmark accuracy"
+  }
+]

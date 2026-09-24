@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "comparison": "continuous vs stopped at truncated epoch 1 and resumed to truncated epoch 2",
+  "exact_state_keys": [
+    "student",
+    "crd",
+    "optimizer",
+    "rng",
+    "epoch",
+    "global_step",
+    "best"
+  ],
+  "exact_metrics": [
+    "epoch",
+    "global_step",
+    "ce",
+    "kd",
+    "crd",
+    "total",
+    "train_top1",
+    "test_top1",
+    "test_top5",
+    "test_ce",
+    "test_n",
+    "lr",
+    "train_n",
+    "best_top1"
+  ],
+  "global_step": 6,
+  "limitation": "workers=0; smoke boundary only; no mid-batch claim"
+}

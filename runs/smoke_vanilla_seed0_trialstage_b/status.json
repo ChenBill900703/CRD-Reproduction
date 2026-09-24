@@ -1,0 +1,16 @@
+{
+  "global_step": 6,
+  "train_n": 192,
+  "test_n": 64,
+  "code_fingerprint": "27e60ccb61ef506c10e0ceeaea910e687cd3b8be69e45672147aa110f18d979e",
+  "status": "complete",
+  "config": "E:\\Contrastive Representation Distillation\\runs\\smoke_vanilla_seed0_trialstage_b\\config.json",
+  "epoch": 2,
+  "final_top1": 1.5625,
+  "final_top5": 6.25,
+  "best_top1": 1.5625,
+  "elapsed_seconds": 0.5398803999996744,
+  "peak_memory_bytes": 347317760,
+  "teacher": {},
+  "checkpoint": "E:\\Contrastive Representation Distillation\\runs\\smoke_vanilla_seed0_trialstage_b\\resume.pt"
+}

@@ -1,0 +1,3 @@
+from pathlib import Path
+p=Path('reproduction/REPRODUCTION_README.md');s=p.read_text(encoding='utf8').replace('- `PREFLIGHT_REPORT.md`：不依賴 CIFAR100 的程式查核結果；真實資料驗證尚未啟動。','- `PREFLIGHT_REPORT.md`：不依賴 CIFAR100 的程式查核結果（歷史查核階段）。\n- `STAGE_AB_REPORT.md`：已完成的真實資料教師驗證、smoke、resume及資源估計；正式訓練尚未啟動。');p.write_text(s,encoding='utf8')
+p=Path('reproduction/COMMANDS.md');s=p.read_text(encoding='utf8');s+='\n## 真實資料驗證完成（2026-09-17）\n\n教師評估與trial=stage_b/benchmark30的smoke已實際執行，詳見STAGE_AB_REPORT.md。既有run目錄不覆蓋；重跑smoke需另命名trial。正式240-epoch命令與run_formal.ps1仍未執行。資料目錄由下載程序建立，受限帳號可能無法讀取；本轮使用可讀資料的使用者環境通過官方MD5、抽樣與訓練測試。\n';p.write_text(s,encoding='utf8')

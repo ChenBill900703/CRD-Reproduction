@@ -1,0 +1,10 @@
+{
+  "sha256": "22aa12e2b632b19ddde155ccf2388671842ddd304824b3095e0a7fff364beb4f",
+  "source_url": "http://shape2prog.csail.mit.edu/repo/resnet32x4_vanilla/ckpt_epoch_240.pth",
+  "architecture": "resnet32x4",
+  "top1": 79.42,
+  "top5": 94.58,
+  "ce": 0.8833264050483703,
+  "n": 10000,
+  "evaluation_seconds": 3.75662870000815
+}

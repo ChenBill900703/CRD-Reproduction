@@ -1,0 +1,2 @@
+# Preserve audited source bytes and checkpoint code hashes across clones.
+* -text

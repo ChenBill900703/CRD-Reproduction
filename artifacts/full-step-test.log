@@ -1,0 +1,9 @@
+normalization constant Z_v1 is set to 111689.1
+normalization constant Z_v2 is set to 109815.8
+{'device': 'cuda', 'seconds': 0.2096667000441812, 'peak_memory_bytes': 1537903104, 'losses': {'ce': 4.649481773376465, 'kd': 3.3766093254089355, 'crd': 23.608154296875, 'total': 26.912614822387695, 'train_top1': 1.5625}, 'batch': 64, 'K': 16384, 'n_data': 50000}
+test_full_step_and_resume (__main__.Semantics.test_full_step_and_resume) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.432s
+
+OK

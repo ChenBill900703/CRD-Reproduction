@@ -1,0 +1,16 @@
+{
+  "README.md": "65f4157a320272555f1aacb04762833fe75a2154950ee082bd8482d48f665368",
+  "scripts/run_cifar_distill.sh": "b6f895364d98efcd0cf5a4202a107fd7385314b25bc9afa7aaf7c721afb45c41",
+  "scripts/run_cifar_vanilla.sh": "9e78ebcfbc5d1b9fe4a45f5cd5424e6dc4c0e028b06982ca9428000c167fa50d",
+  "scripts/fetch_pretrained_teachers.sh": "a270e1da32dc49d5ade84e3cb0ebce34b7eb9d44b28903cf59013b061f2ac522",
+  "train_student.py": "ac15c45568acccf3a288b440ad0813a71a4e28beb9e5ce1bf846dc0f1c80e463",
+  "train_teacher.py": "7a3c9c7f496ded23b36cccb5791cff9ae6759dffcfd6b3c990af57d8b00777f0",
+  "helper/loops.py": "20db75034b6d260d5a6387c0490b532145a95067e31bb819d7de18676276f683",
+  "helper/util.py": "76fe51b154fa8e73b7af7f74716adbb2282650162e882610a2b11e1ca0f28878",
+  "dataset/cifar100.py": "364b1f5953bb9b3b0729206f7daca4aef31e796a6e8c405b2ccc55b4c0988af9",
+  "crd/criterion.py": "0f2422b4afeb07ed65da425d5f7bd0396db3a6dd82384c83f33769832b655ab1",
+  "crd/memory.py": "bfb0789a3edb7f5377a53b9ce6034641664722606f03975aa8116d3bae54afe3",
+  "distiller_zoo/KD.py": "21d181e63d708a7c1984406a35413fd0dbc5830e14a4e4df01a1cb8808d3de6d",
+  "models/resnet.py": "8371fa36a11db71a66edd4deb591e3fd34de5ab5e2f6a6b53850af9206129f47",
+  "models/__init__.py": "5e79c90bf3e7dfddd66a41154c9dda50fb156d870a180198edbb3d7f3aaa3509"
+}

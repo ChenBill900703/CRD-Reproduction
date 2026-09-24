@@ -1,0 +1,164 @@
+{
+  "status": "complete",
+  "pid": 22040,
+  "started_at": 1789618436.8392155,
+  "completed": [
+    {
+      "name": "author_code_vanilla_seed0_trial1",
+      "final_top1": 72.22,
+      "completed_at": 1789625263.740293
+    },
+    {
+      "name": "author_code_kd_seed0_trial1",
+      "final_top1": 72.86,
+      "completed_at": 1789633981.02634
+    },
+    {
+      "name": "author_code_crd_seed0_trial1",
+      "final_top1": 75.05,
+      "completed_at": 1789656782.7187278
+    },
+    {
+      "name": "author_code_crd_kd_seed0_trial1",
+      "final_top1": 75.43,
+      "completed_at": 1789679603.3913467
+    },
+    {
+      "name": "author_code_vanilla_seed1_trial1",
+      "final_top1": 72.68,
+      "completed_at": 1789686490.7715316
+    },
+    {
+      "name": "author_code_kd_seed1_trial1",
+      "final_top1": 73.15,
+      "completed_at": 1789695394.0613751
+    },
+    {
+      "name": "author_code_crd_seed1_trial1",
+      "final_top1": 75.56,
+      "completed_at": 1789718161.9467263
+    },
+    {
+      "name": "author_code_crd_kd_seed1_trial1",
+      "final_top1": 75.39,
+      "completed_at": 1789740982.5244584
+    },
+    {
+      "name": "author_code_vanilla_seed2_trial1",
+      "final_top1": 72.39,
+      "completed_at": 1789747752.7692006
+    },
+    {
+      "name": "author_code_kd_seed2_trial1",
+      "final_top1": 73.31,
+      "completed_at": 1789756436.0477855
+    },
+    {
+      "name": "author_code_crd_seed2_trial1",
+      "final_top1": 75.25,
+      "completed_at": 1789779018.1802502
+    },
+    {
+      "name": "author_code_crd_kd_seed2_trial1",
+      "final_top1": 75.3,
+      "completed_at": 1789801823.0350323
+    },
+    {
+      "name": "author_code_vanilla_seed3_trial1",
+      "final_top1": 72.29,
+      "completed_at": 1789808800.1178143
+    },
+    {
+      "name": "author_code_kd_seed3_trial1",
+      "final_top1": 73.4,
+      "completed_at": 1789817698.5543878
+    },
+    {
+      "name": "author_code_crd_seed3_trial1",
+      "final_top1": 75.48,
+      "completed_at": 1789840817.7277937
+    },
+    {
+      "name": "author_code_crd_kd_seed3_trial1",
+      "final_top1": 74.92,
+      "completed_at": 1789863347.7745688
+    },
+    {
+      "name": "author_code_vanilla_seed4_trial1",
+      "final_top1": 72.86,
+      "completed_at": 1789870115.5812001
+    },
+    {
+      "name": "author_code_kd_seed4_trial1",
+      "final_top1": 73.15,
+      "completed_at": 1789878814.6016352
+    },
+    {
+      "name": "author_code_crd_seed4_trial1",
+      "final_top1": 75.3,
+      "completed_at": 1789901348.0962393
+    },
+    {
+      "name": "author_code_crd_kd_seed4_trial1",
+      "final_top1": 75.61,
+      "completed_at": 1789923854.7638078
+    },
+    {
+      "name": "paper_tau_crd_seed0_trial1",
+      "final_top1": 75.02,
+      "completed_at": 1789946403.8055065
+    },
+    {
+      "name": "paper_tau_crd_kd_seed0_trial1",
+      "final_top1": 75.43,
+      "completed_at": 1789969146.71296
+    },
+    {
+      "name": "paper_tau_crd_seed1_trial1",
+      "final_top1": 75.53,
+      "completed_at": 1789991990.7439778
+    },
+    {
+      "name": "paper_tau_crd_kd_seed1_trial1",
+      "final_top1": 74.98,
+      "completed_at": 1790048976.961312
+    },
+    {
+      "name": "paper_tau_crd_seed2_trial1",
+      "final_top1": 75.09,
+      "completed_at": 1790072030.5347607
+    },
+    {
+      "name": "paper_tau_crd_kd_seed2_trial1",
+      "final_top1": 74.85,
+      "completed_at": 1790094954.4630382
+    },
+    {
+      "name": "paper_tau_crd_seed3_trial1",
+      "final_top1": 75.18,
+      "completed_at": 1790117776.368586
+    },
+    {
+      "name": "paper_tau_crd_kd_seed3_trial1",
+      "final_top1": 75.09,
+      "completed_at": 1790140601.2478435
+    },
+    {
+      "name": "paper_tau_crd_seed4_trial1",
+      "final_top1": 75.22,
+      "completed_at": 1790163453.4346611
+    },
+    {
+      "name": "paper_tau_crd_kd_seed4_trial1",
+      "final_top1": 75.22,
+      "completed_at": 1790187849.2724252
+    }
+  ],
+  "total": 30,
+  "current": null,
+  "updated_at": 1790187860.2474945,
+  "recovered_at": 1790186069.276217,
+  "recovery_evidence": "E:\\Contrastive Representation Distillation\\artifacts\\formal\\recovery-20260924-015429",
+  "pause_reason": "User requested urgent reboot",
+  "finished_at": 1790187860.2474945
+}

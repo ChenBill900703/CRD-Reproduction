@@ -1,0 +1,80 @@
+{
+  "profile": "smoke",
+  "method": "crd",
+  "nce_t": 0.07,
+  "nce_k": 16384,
+  "batch_size": 64,
+  "workers": 0,
+  "epochs": 2,
+  "max_steps": 3,
+  "eval_steps": 2,
+  "model_s": "resnet8x4",
+  "model_t": "resnet32x4",
+  "dataset": "cifar100",
+  "test_batch_size": 32,
+  "shuffle": true,
+  "drop_last": false,
+  "mode": "exact",
+  "percent": 1.0,
+  "feat_dim": 128,
+  "n_data": 50000,
+  "nce_m": 0.5,
+  "kd_T": 4,
+  "learning_rate": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "lr_decay_epochs": [
+    150,
+    180,
+    210
+  ],
+  "lr_decay_rate": 0.1,
+  "precision": "fp32",
+  "tf32": false,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": true,
+  "seed_list": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "std_ddof": 1,
+  "loss_weights": [
+    1,
+    0,
+    0.8
+  ],
+  "normalization_mean": [
+    0.5071,
+    0.4867,
+    0.4408
+  ],
+  "normalization_std": [
+    0.2675,
+    0.2565,
+    0.2761
+  ],
+  "augmentation": [
+    "RandomCrop(32,padding=4)",
+    "RandomHorizontalFlip()",
+    "ToTensor()",
+    "Normalize"
+  ],
+  "optimizer": "SGD",
+  "nesterov": false,
+  "dampening": 0,
+  "test_augmentation": [
+    "ToTensor()",
+    "Normalize"
+  ],
+  "checkpoint_boundary": "epoch",
+  "num_gpus": 1,
+  "seed": 0,
+  "trial": "stage_b",
+  "data": "E:\\Contrastive Representation Distillation\\data",
+  "teacher": "E:\\Contrastive Representation Distillation\\assets\\resnet32x4_vanilla\\ckpt_epoch_240.pth",
+  "download": false,
+  "evaluate_teacher": false
+}

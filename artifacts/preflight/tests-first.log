@@ -1,0 +1,18 @@
+test_all_methods_main_resume_and_final_commit_recovery (__main__.Preflight.test_all_methods_main_resume_and_final_commit_recovery) ... ok
+test_atomic_failure_preserves_checkpoint (__main__.Preflight.test_atomic_failure_preserves_checkpoint) ... ok
+test_cli_help_and_wrong_entrypoint (__main__.Preflight.test_cli_help_and_wrong_entrypoint) ... ok
+test_config_rejects_ignored_and_invalid_settings (__main__.Preflight.test_config_rejects_ignored_and_invalid_settings) ... ok
+test_cpu_all_methods_step (__main__.Preflight.test_cpu_all_methods_step) ... ok
+test_evaluate_empty_nonfinite_weighting_and_limit (__main__.Preflight.test_evaluate_empty_nonfinite_weighting_and_limit) ... ok
+test_exclusive_run_lock (__main__.Preflight.test_exclusive_run_lock) ... ok
+test_nonfinite_gradient_stops_before_optimizer (__main__.Preflight.test_nonfinite_gradient_stops_before_optimizer) ... ok
+test_synthetic_official_sampler_and_loader (__main__.Preflight.test_synthetic_official_sampler_and_loader) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 32.875s
+
+OK
+normalization constant Z_v1 is set to 93568.5
+normalization constant Z_v2 is set to 113021.3
+normalization constant Z_v1 is set to 105262.7
+normalization constant Z_v2 is set to 125973.1

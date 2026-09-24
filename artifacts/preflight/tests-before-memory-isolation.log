@@ -1,0 +1,57 @@
+test_alias_cpu (test_semantics.Semantics.test_alias_cpu) ... ok
+test_epoch_boundary_loader_resume (test_semantics.Semantics.test_epoch_boundary_loader_resume) ... ok
+normalization constant Z_v1 is set to 236.1
+normalization constant Z_v2 is set to 172365.9
+normalization constant Z_v1 is set to 99767.3
+normalization constant Z_v2 is set to 77459.6
+normalization constant Z_v1 is set to 111689.1
+normalization constant Z_v2 is set to 109815.8
+{'device': 'cuda', 'seconds': 0.08488880004733801, 'peak_memory_bytes': 1608483840, 'losses': {'ce': 4.649481773376465, 'kd': 3.3766093254089355, 'crd': 23.608154296875, 'total': 26.912614822387695, 'train_top1': 1.5625}, 'batch': 64, 'K': 16384, 'n_data': 50000}
+test_full_step_and_resume (test_semantics.Semantics.test_full_step_and_resume) ... ok
+test_kd_and_lr (test_semantics.Semantics.test_kd_and_lr) ... ok
+test_original_numerical_parity (test_semantics.Semantics.test_original_numerical_parity) ... ok
+test_all_methods_main_resume_and_final_commit_recovery (test_preflight.Preflight.test_all_methods_main_resume_and_final_commit_recovery) ... ok
+test_atomic_failure_preserves_checkpoint (test_preflight.Preflight.test_atomic_failure_preserves_checkpoint) ... ok
+test_cli_help_and_wrong_entrypoint (test_preflight.Preflight.test_cli_help_and_wrong_entrypoint) ... ok
+test_config_rejects_ignored_and_invalid_settings (test_preflight.Preflight.test_config_rejects_ignored_and_invalid_settings) ... ok
+test_cpu_all_methods_step (test_preflight.Preflight.test_cpu_all_methods_step) ... ok
+test_evaluate_empty_nonfinite_weighting_and_limit (test_preflight.Preflight.test_evaluate_empty_nonfinite_weighting_and_limit) ... ok
+test_exclusive_run_lock (test_preflight.Preflight.test_exclusive_run_lock) ... ok
+test_full_crd_upstream_parity_both_temperatures (test_preflight.Preflight.test_full_crd_upstream_parity_both_temperatures) ... ok
+test_gpu_formal_shape_multistep_both_tau (test_preflight.Preflight.test_gpu_formal_shape_multistep_both_tau) ... FAIL
+test_nonfinite_gradient_stops_before_optimizer (test_preflight.Preflight.test_nonfinite_gradient_stops_before_optimizer) ... ok
+test_synthetic_official_sampler_and_loader (test_preflight.Preflight.test_synthetic_official_sampler_and_loader) ... ok
+test_duplicate_seed_and_mixed_code_not_formal (test_results.Results.test_duplicate_seed_and_mixed_code_not_formal) ... ok
+test_final_not_best_and_seed_not_trial (test_results.Results.test_final_not_best_and_seed_not_trial) ... ok
+test_invalid_final_teacher_and_missing_files_preserved (test_results.Results.test_invalid_final_teacher_and_missing_files_preserved) ... ok
+
+======================================================================
+FAIL: test_gpu_formal_shape_multistep_both_tau (test_preflight.Preflight.test_gpu_formal_shape_multistep_both_tau)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Contrastive Representation Distillation\reproduction\test_preflight.py", line 179, in test_gpu_formal_shape_multistep_both_tau
+    self.assertLessEqual(max(allocated[2:])-min(allocated[2:]),1024*1024)
+AssertionError: 62102016 not less than or equal to 1048576
+
+----------------------------------------------------------------------
+Ran 19 tests in 38.948s
+
+FAILED (failures=1)
+normalization constant Z_v1 is set to 3707.6
+normalization constant Z_v2 is set to 100214.1
+normalization constant Z_v1 is set to 3707.6
+normalization constant Z_v2 is set to 100214.1
+normalization constant Z_v1 is set to 93568.5
+normalization constant Z_v2 is set to 113021.3
+normalization constant Z_v1 is set to 105262.7
+normalization constant Z_v2 is set to 125973.1
+normalization constant Z_v1 is set to 226.1
+normalization constant Z_v2 is set to 193.2
+normalization constant Z_v1 is set to 226.1
+normalization constant Z_v2 is set to 193.2
+normalization constant Z_v1 is set to 148.4
+normalization constant Z_v2 is set to 137.8
+normalization constant Z_v1 is set to 148.4
+normalization constant Z_v2 is set to 137.8
+normalization constant Z_v1 is set to 111689.1
+normalization constant Z_v2 is set to 109815.8

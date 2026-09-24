@@ -1,0 +1,16 @@
+{
+  "python": "3.12.14",
+  "os": "Windows-11-10.0.26100-SP0",
+  "torch": "2.6.0+cu124",
+  "torchvision": "0.21.0+cu124",
+  "numpy": "2.5.2",
+  "cuda": "12.4",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 3070 Ti",
+  "cudnn": 90100,
+  "cpu_threads": 4,
+  "benchmark": false,
+  "deterministic": true,
+  "tf32_matmul": false,
+  "tf32_cudnn": false
+}

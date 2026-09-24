@@ -1,0 +1,2 @@
+{"epoch": 1, "ce": 4.6, "kd": 0.2, "crd": 10.0, "total": 12.8, "train_top1": 1.0, "test_top1": 2.0, "test_top5": 5.0, "lr": 0.05}
+{"epoch": 2, "ce": 4.6, "kd": 0.2, "crd": 10.0, "total": 12.8, "train_top1": 1.0, "test_top1": 2.0, "test_top5": 5.0, "lr": 0.05}

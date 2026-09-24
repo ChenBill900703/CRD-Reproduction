@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('reproduction/test_preflight.py');s=p.read_text();s=s.replace("            self.assertLessEqual(max(allocated[2:])-min(allocated[2:]),1024*1024)","            print('GPU allocation trace',tau,allocated,flush=True)\n            (BASE/'artifacts/preflight/allocation-trace.json').write_text(json.dumps(dict(tau=tau,allocated=allocated),indent=2))\n            self.assertLessEqual(max(allocated[2:])-min(allocated[2:]),1024*1024)");p.write_text(s)

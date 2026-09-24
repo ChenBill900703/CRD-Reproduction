@@ -1,0 +1,48 @@
+test_alias_cpu (__main__.Semantics.test_alias_cpu) ... ok
+test_full_step_and_resume (__main__.Semantics.test_full_step_and_resume) ... ERROR
+test_kd_and_lr (__main__.Semantics.test_kd_and_lr) ... ok
+test_original_numerical_parity (__main__.Semantics.test_original_numerical_parity) ... ok
+test_sampler_real (__main__.Semantics.test_sampler_real) ... ERROR
+
+======================================================================
+ERROR: test_full_step_and_resume (__main__.Semantics.test_full_step_and_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Contrastive Representation Distillation\reproduction\test_semantics.py", line 55, in test_full_step_and_resume
+    s,t,crd,opt=build(c,device); g=torch.Generator().manual_seed(123)
+                ^^^^^^^^^^^^^^^
+  File "E:\Contrastive Representation Distillation\reproduction\reproduce.py", line 56, in build
+    ck=torch.load(c['teacher'],map_location='cpu',weights_only=True)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Contrastive Representation Distillation\.venv\Lib\site-packages\torch\serialization.py", line 1494, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, do those steps only if you trust the source of the checkpoint. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL numpy.core.multiarray.scalar was not an allowed global by default. Please use `torch.serialization.add_safe_globals([scalar])` or the `torch.serialization.safe_globals([scalar])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
+
+======================================================================
+ERROR: test_sampler_real (__main__.Semantics.test_sampler_real)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Contrastive Representation Distillation\reproduction\test_semantics.py", line 46, in test_sampler_real
+    d=CIFAR100InstanceSample(ROOT/'data',train=True,download=False,k=16384,transform=transforms.ToTensor())
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Contrastive Representation Distillation\reproduction\dataset\cifar100.py", line 102, in __init__
+    super().__init__(root=root, train=train, download=download,
+  File "E:\Contrastive Representation Distillation\.venv\Lib\site-packages\torchvision\datasets\cifar.py", line 69, in __init__
+    raise RuntimeError("Dataset not found or corrupted. You can use download=True to download it")
+RuntimeError: Dataset not found or corrupted. You can use download=True to download it
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.154s
+
+FAILED (errors=2)
+normalization constant Z_v1 is set to 236.1
+normalization constant Z_v2 is set to 172365.9
+normalization constant Z_v1 is set to 3707.6
+normalization constant Z_v2 is set to 100214.1
+normalization constant Z_v1 is set to 3707.6
+normalization constant Z_v2 is set to 100214.1

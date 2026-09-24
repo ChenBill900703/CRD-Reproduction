@@ -1,0 +1,25 @@
+{
+  "global_step": 187680,
+  "train_n": 50000,
+  "test_n": 10000,
+  "code_fingerprint": "27e60ccb61ef506c10e0ceeaea910e687cd3b8be69e45672147aa110f18d979e",
+  "status": "complete",
+  "config": "E:\\Contrastive Representation Distillation\\runs\\paper_tau_crd_kd_seed1_trial1\\config.json",
+  "epoch": 240,
+  "final_top1": 74.98,
+  "final_top5": 93.53,
+  "best_top1": 75.45,
+  "elapsed_seconds": 22656.123666700085,
+  "peak_memory_bytes": 1446541312,
+  "teacher": {
+    "sha256": "22aa12e2b632b19ddde155ccf2388671842ddd304824b3095e0a7fff364beb4f",
+    "source_url": "http://shape2prog.csail.mit.edu/repo/resnet32x4_vanilla/ckpt_epoch_240.pth",
+    "architecture": "resnet32x4",
+    "top1": 79.42,
+    "top5": 94.58,
+    "ce": 0.8833264050483703,
+    "n": 10000,
+    "evaluation_seconds": 3.75662870000815
+  },
+  "checkpoint": "E:\\Contrastive Representation Distillation\\runs\\paper_tau_crd_kd_seed1_trial1\\resume.pt"
+}

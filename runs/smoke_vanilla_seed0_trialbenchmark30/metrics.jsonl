@@ -1,0 +1,1 @@
+{"epoch": 1, "global_step": 30, "ce": 4.5717983881632485, "kd": 0.0, "crd": 0.0, "total": 4.5717983881632485, "train_top1": 3.125, "test_top1": 4.06, "test_top5": 14.03, "test_ce": 4.732953338623047, "test_n": 10000, "lr": 0.05, "seconds": 3.2860594000085257, "train_seconds": 1.3259267999674194, "train_n": 1920, "best_top1": 4.06, "peak_memory_bytes": 347317760}

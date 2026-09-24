@@ -1,0 +1,25 @@
+{
+  "global_step": 6,
+  "train_n": 192,
+  "test_n": 64,
+  "code_fingerprint": "27e60ccb61ef506c10e0ceeaea910e687cd3b8be69e45672147aa110f18d979e",
+  "status": "complete",
+  "config": "E:\\Contrastive Representation Distillation\\runs\\smoke_crd_kd_seed0_trialstage_b\\config.json",
+  "epoch": 2,
+  "final_top1": 0.0,
+  "final_top5": 10.9375,
+  "best_top1": 0.0,
+  "elapsed_seconds": 0.9187055000220425,
+  "peak_memory_bytes": 1446451200,
+  "teacher": {
+    "sha256": "22aa12e2b632b19ddde155ccf2388671842ddd304824b3095e0a7fff364beb4f",
+    "source_url": "http://shape2prog.csail.mit.edu/repo/resnet32x4_vanilla/ckpt_epoch_240.pth",
+    "architecture": "resnet32x4",
+    "top1": 79.42,
+    "top5": 94.58,
+    "ce": 0.8833264050483703,
+    "n": 10000,
+    "evaluation_seconds": 3.8618675000034273
+  },
+  "checkpoint": "E:\\Contrastive Representation Distillation\\runs\\smoke_crd_kd_seed0_trialstage_b\\resume.pt"
+}

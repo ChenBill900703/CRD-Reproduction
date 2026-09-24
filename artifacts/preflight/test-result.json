@@ -1,0 +1,8 @@
+{
+  "tests_run": 20,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "scope": "Synthetic data only; official teacher checkpoint is loaded. CIFAR-100 is not read; no benchmark training."
+}

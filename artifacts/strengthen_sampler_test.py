@@ -1,0 +1,4 @@
+from pathlib import Path
+p=Path('reproduction/test_semantics.py');s=p.read_text();s=s.replace("  new=ContrastMemory(8,23,5); new.load_state_dict(original.state_dict())", "  new=ContrastMemory(8,23,5)\n  self.assertLessEqual(new.memory_v1.abs().max().item(),(3/8)**.5)\n  self.assertFalse(torch.allclose(new.memory_v1.norm(dim=1),torch.ones(23)))\n  new.load_state_dict(original.state_dict())")
+s=s.replace("  self.assertEqual(np.stack(rows).shape,(3,16385)); self.assertEqual(d.cls_negative.shape,(100,49500))", "  self.assertEqual(np.stack(rows).shape,(3,16385)); self.assertEqual(d.cls_negative.shape,(100,49500))\n  batch=next(iter(DataLoader(d,batch_size=64,shuffle=True,generator=torch.Generator().manual_seed(1))))\n  self.assertEqual(batch[3].shape,(64,16385)); self.assertTrue(torch.equal(batch[2],batch[3][:,0]))\n  self.assertTrue(np.all(labels[batch[3][:,1:].numpy()]!=batch[1].numpy()[:,None]))")
+p.write_text(s)

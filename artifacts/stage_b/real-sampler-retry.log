@@ -1,0 +1,19 @@
+test_sampler_real (__main__.Semantics.test_sampler_real) ... ERROR
+
+======================================================================
+ERROR: test_sampler_real (__main__.Semantics.test_sampler_real)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Contrastive Representation Distillation\reproduction\test_semantics.py", line 49, in test_sampler_real
+    d=CIFAR100InstanceSample(ROOT/'data',train=True,download=False,k=16384,transform=transforms.ToTensor())
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Contrastive Representation Distillation\reproduction\dataset\cifar100.py", line 102, in __init__
+    super().__init__(root=root, train=train, download=download,
+  File "E:\Contrastive Representation Distillation\.venv\Lib\site-packages\torchvision\datasets\cifar.py", line 69, in __init__
+    raise RuntimeError("Dataset not found or corrupted. You can use download=True to download it")
+RuntimeError: Dataset not found or corrupted. You can use download=True to download it
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+FAILED (errors=1)
