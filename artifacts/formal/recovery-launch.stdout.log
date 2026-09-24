@@ -487,3 +487,196 @@ Verified and backed up checkpoint epoch 36 at E:\Contrastive Representation Dist
     "gap_pp": -0.4900000000000091
   }
 ]
+[
+  {
+    "profile": "author_code",
+    "method": "vanilla",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 72.488,
+    "std_sample_ddof1": 0.2719742634882942,
+    "gap_pp": -0.012000000000000455
+  },
+  {
+    "profile": "author_code",
+    "method": "kd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 73.174,
+    "std_sample_ddof1": 0.20574255758107204,
+    "gap_pp": -0.1559999999999917
+  },
+  {
+    "profile": "author_code",
+    "method": "crd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 75.328,
+    "std_sample_ddof1": 0.20067386476569637,
+    "gap_pp": -0.18200000000000216
+  },
+  {
+    "profile": "author_code",
+    "method": "crd_kd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 75.33,
+    "std_sample_ddof1": 0.255440795488896,
+    "gap_pp": -0.12999999999999545
+  },
+  {
+    "profile": "paper_tau",
+    "method": "crd",
+    "seeds": [
+      0
+    ],
+    "n": 1,
+    "formal_five_seed": false,
+    "consistent": true,
+    "mean": 75.02,
+    "std_sample_ddof1": null,
+    "gap_pp": -0.4900000000000091
+  },
+  {
+    "profile": "paper_tau",
+    "method": "crd_kd",
+    "seeds": [
+      0
+    ],
+    "n": 1,
+    "formal_five_seed": false,
+    "consistent": true,
+    "mean": 75.43,
+    "std_sample_ddof1": null,
+    "gap_pp": -0.029999999999986926
+  }
+]
+[
+  {
+    "profile": "author_code",
+    "method": "vanilla",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 72.488,
+    "std_sample_ddof1": 0.2719742634882942,
+    "gap_pp": -0.012000000000000455
+  },
+  {
+    "profile": "author_code",
+    "method": "kd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 73.174,
+    "std_sample_ddof1": 0.20574255758107204,
+    "gap_pp": -0.1559999999999917
+  },
+  {
+    "profile": "author_code",
+    "method": "crd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 75.328,
+    "std_sample_ddof1": 0.20067386476569637,
+    "gap_pp": -0.18200000000000216
+  },
+  {
+    "profile": "author_code",
+    "method": "crd_kd",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "formal_five_seed": true,
+    "consistent": true,
+    "mean": 75.33,
+    "std_sample_ddof1": 0.255440795488896,
+    "gap_pp": -0.12999999999999545
+  },
+  {
+    "profile": "paper_tau",
+    "method": "crd",
+    "seeds": [
+      0,
+      1
+    ],
+    "n": 2,
+    "formal_five_seed": false,
+    "consistent": true,
+    "mean": 75.275,
+    "std_sample_ddof1": 0.36062445840514284,
+    "gap_pp": -0.23499999999999943
+  },
+  {
+    "profile": "paper_tau",
+    "method": "crd_kd",
+    "seeds": [
+      0
+    ],
+    "n": 1,
+    "formal_five_seed": false,
+    "consistent": true,
+    "mean": 75.43,
+    "std_sample_ddof1": null,
+    "gap_pp": -0.029999999999986926
+  }
+]
