@@ -1,11 +1,40 @@
-# CRD 論文重現：從原始碼到 30 次完整實驗
+# CRD 復現｜Contrastive Representation Distillation
 
-> **已完成**：CIFAR-100，`resnet32x4 → resnet8x4`，6 組設定 × 5 個 seeds × 240 epochs。  
-> 每個數字都能追到設定、逐 epoch 紀錄與原作者實作；主要結果使用 **最後 epoch**，不是最好的一次。
+## 論文資訊
 
-![Final comparison](reports/final-comparison.png)
+- **Paper**：Contrastive Representation Distillation
+- **Authors**：Yonglong Tian、Dilip Krishnan、Phillip Isola
+- **Venue / Year**：ICLR 2020
+- **Paper URL**：[arXiv](https://arxiv.org/abs/1910.10699)／[本次核對 v3](https://arxiv.org/pdf/1910.10699v3)
+- **Official Code**：[HobbitLong/RepDistiller](https://github.com/HobbitLong/RepDistiller)
 
-## 先看結論
+## 論文摘要
+
+原論文研究神經網路之間的表示知識轉移。傳統知識蒸餾以教師與學生的輸出機率為主要對齊目標，可能忽略教師中間表示的結構資訊。作者提出 CRD，以對比學習區分配對與非配對的師生表示，鼓勵學生保留教師表示中的資訊，並在模型壓縮、集成蒸餾與跨模態轉移等任務評估效果。來源：[原論文摘要](https://arxiv.org/abs/1910.10699)。
+
+## 研究目的
+
+核心問題是：**除了模仿分類機率，學生能否透過對比目標學到更多教師表示的結構資訊，改善知識轉移？** 動機是 KL divergence 對齊輸出分布，未必充分約束中間表示。原論文的問題範圍比本專案的單一 CIFAR-100 模型配對更廣。來源：[原論文第 1、3 節](https://arxiv.org/pdf/1910.10699v3)。
+
+## 研究方法
+
+KD 讓學生模仿教師的分類機率；CRD 則讓學生模仿教師如何表示一張圖片。
+
+論文第 3 節 Eq. (4)–(18) 用二元判別區分「同一樣本的師生表示」與「各自獨立抽取的表示」，從 joint distribution 與 product of marginals 推導 mutual-information lower bound。Eq. (19) 讓師生倒數第二層特徵各經線性投影、L2 normalization，再用內積與 temperature 建立 critic。
+
+同一張影像的師生表示構成正配對，不同樣本構成負配對；學生同時接受分類監督，也可結合 KD。官方 NCE、memory 與 projection 的執行細節，以及論文／程式不一致處，另列於「實驗與復現細節」。來源：[原論文第 3 節、Eq. (19)](https://arxiv.org/pdf/1910.10699v3)。
+
+## 原論文主要成果
+
+對 CIFAR-100 的 `resnet32x4 → resnet8x4`，原論文 [Table 1、Table 10](https://arxiv.org/pdf/1910.10699v3) 報告學生單獨訓練 **72.50%**、KD **73.33 ± 0.25%**、CRD **75.51 ± 0.18%**、CRD+KD **75.46 ± 0.25%**。相關結果支持 CRD 在此配對優於 Vanilla 與 KD；也顯示 CRD+KD 並非每個配對都比 CRD 更高。論文表格說明採五次實驗平均，但實際 seeds 與 std 分母仍未確認。
+
+## 本專案復現範圍
+
+本專案限定 CIFAR-100、`resnet32x4 → resnet8x4`，對照原論文 Table 1／Table 10 的此模型配對。已完成 Vanilla、KD、CRD、CRD+KD，以及 CRD／CRD+KD 的 temperature 對照，共 6 組設定 × 5 個 seeds × 240 epochs、30 次訓練。
+
+未完成範圍：其他模型配對、ImageNet、linear transfer、跨模態、ensemble、Deep Mutual Learning 與完整消融。原 repository 也未提供所有論文實驗的完整入口。後續需另立設定與來源核對，不能用這 30 runs 宣稱整篇論文已完成。
+
+## 本專案復現結果
 
 CRD 可以讓小模型學得更好。本次公開程式設定下，學生從零訓練為 **72.488%**，CRD 為 **75.328%**，增加 **2.840 個百分點**。結果接近論文，但不宣稱精確複製原作者實驗，也不宣稱整篇論文已重現。
 
@@ -20,29 +49,33 @@ CRD 可以讓小模型學得更好。本次公開程式設定下，學生從零�
 
 每組都是預先指定 seeds `[0,1,2,3,4]`，沒有刪掉較差的 run。標準差採 **ddof=1**；seeds 與這個計算慣例是本次新增規約，作者的 seeds／std 分母未確認。教師實測 **79.42% top-1、94.58% top-5**。
 
-**怎麼解讀？** 公開程式基準的平均差距都小於 0.2 個百分點。CRD 與 CRD+KD 幾乎相同，不適合宣稱後者勝出。τ=0.1 在此配對略低，也不能據此說其他架構一定一樣。論文標準差不是硬性通過門檻。
-
 - [完整逐 seed 結果與限制](reports/FINAL_REPORT.md)
 - [機器可讀的最終查核](reports/final-audit.json)
 - [彙整 JSON](artifacts/summary.json)／[逐 run CSV](artifacts/comparison.csv)
 - [來源對照](reproduction/SOURCE_AUDIT.md)
 - [相容性與語意測試](reproduction/PREFLIGHT_REPORT.md)／[真實資料 smoke 報告](reproduction/STAGE_AB_REPORT.md)
 
-## CRD 到底在做什麼？
+![Final comparison](reports/final-comparison.png)
 
-KD 讓學生模仿教師的分類機率；CRD 則讓學生模仿教師如何表示一張圖片。
+## 結果討論與限制
 
-論文第 3 節 Eq. (4)–(18) 用二元判別區分「同一樣本的師生表示」與「各自獨立抽取的表示」，從 joint distribution 與 product of marginals 推導 mutual-information lower bound。Eq. (19) 讓師生倒數第二層特徵各經線性投影、L2 normalization，再用內積與 temperature 建立 critic。
+公開程式基準的平均差距都小於 0.2 個百分點。CRD 與 CRD+KD 幾乎相同，不適合宣稱後者勝出。τ=0.1 在此配對略低，也不能據此說其他架構一定一樣。論文標準差不是硬性通過門檻。
+
+**趨勢重現**：本次固定配對支持 CRD 改善學生單獨訓練與 KD 的表現。**數值接近**：以上比較以本專案 final checkpoint 與已確認論文表值為準。**不能宣稱完全重現**：論文 seeds／std 分母與產生原數值的歷史程式版本未確認；論文與公開程式的 temperature 衝突也尚未解決。
+
+## 實驗與復現細節
+
+### 官方實作與來源差異
 
 實際執行沿用官方 **雙向 NCE 二元對比損失 + 跨 batch memory banks**，不是 SimCLR／CLIP 的 batch softmax，也不是只比較當前 batch。兩方向 loss 相加，教師 backbone 固定，但教師 projection head 仍訓練。
 
-### 為什麼有兩種 temperature？
+### 論文與程式的 temperature 差異
 
 論文 p.10 §4.5 說 CIFAR 使用 τ=0.1；本次固定 commit 的 `train_student.py` 預設卻是 0.07，CIFAR 範例沒有覆寫。因此先執行 `author_code` 0.07，再執行只改 τ 的 `paper_tau` 0.1。兩者都保留，沒有依結果選出「作者真值」。這個來源衝突尚未解決。
 
 論文 Eq. (19) 的簡化表達也不能等同完整程式流程：官方保留首次 forward 決定的 Z normalization；CIFAR negatives 排除同類別，但 NCE 的 Pn 仍為 1/50000。
 
-## 固定設定一覽
+### 本專案固定設定
 
 | 項目 | 設定與來源 |
 |---|---|
@@ -72,23 +105,26 @@ KD 讓學生模仿教師的分類機率；CRD 則讓學生模仿教師如何表�
 
 workers0 與 deterministic 設定是本次可重現性變更，並非作者原始 defaults。相容性修補包括 torchvision data/targets、device handling、Windows 路徑／命名、KD reduction 與 checkpoint API。細節見來源與測試報告。
 
-## 專案地圖
+### 既有驗證與中斷紀錄
 
-```text
-reproduction/       官方結構上的最小修補、訓練入口、測試與彙整
-reference/          固定版本官方原始碼（獨立來源，不修改）
-configs/            author_code / paper_tau / smoke 分開的設定
-runs/               設定、環境、逐 epoch metrics、status、events、曲線
-artifacts/          測試證據、環境鎖定、來源 manifest、console logs
-reports/            最終報告、查核與比較圖
-tools/              收尾報告工具；不屬於凍結訓練程式碼
-```
+- 20 項不依賴 CIFAR 資料的語意／流程測試通過；部分測試需要已下載的教師權重。
+- 官方 CRD 與修補版固定輸入數值、梯度、memory 更新比對；兩種 τ 都有覆蓋。
+- exact positive、異類 negatives、全域 index、模型與 projection shapes、teacher BN 不變及 heads 更新。
+- KD scaling、LR 邊界、Z 只初始化一次、完整 RNG/optimizer checkpoint round-trip。
+- 正式 B64/K16384 GPU steps、真實 CIFAR smoke、教師全 test 評估與真實 epoch resume。
+- 最終 30 runs、7200 筆 epoch 紀錄、六組五 seeds、教師 checksum 與凍結 Python hash 查核。
 
-本機 checkpoint、資料集、虛擬環境與中斷備份仍保留，但不放入 Git。Git 版本提供完整程式、設定及文字／圖表證據。30 runs 的完整 resume 與 student_final 權重另放在 [v1.0.0 Release](https://github.com/ChenBill900703/CRD-Reproduction/releases/tag/v1.0.0)，下載 formal-checkpoints.zip 與 SHA256SUMS.txt 核對後，在專案根目錄解壓。resume 仍需原環境與 config，跨路徑／硬體不保證直接接續。
+訓練曾遭遇兩次非預期關機與一次主動暫停重開，均從最後完整 checkpoint 接續。Windows 事件不足以證明根因；不將關機歸咎於訓練或硬體。恢復事件保存在各 run 的 events.jsonl。
 
-## 如何重跑（Windows PowerShell）
+### 執行資源
+
+CRD 每 epoch 約 94–98 秒，一次 240 epochs 約 6.3 小時；框架記錄的 peak allocated memory 約 1.35 GiB，並非整張 GPU 的使用量。時間排除停機、初始化與 checkpoint I/O；不同硬體不能直接套用。
+
+## 環境
 
 已測環境：Windows 11、RTX 3070 Ti 8GB、Python 3.12.14、PyTorch 2.6.0+cu124、torchvision 0.21.0+cu124、NumPy 2.5.2。其他組合未驗證。完整套件版本在 [requirements-lock.txt](artifacts/requirements-lock.txt)。
+
+## 如何重跑
 
 官方 reference 以固定 commit submodule 保存，clone 後先執行 `git submodule update --init`。在專案根目錄執行；`python` 必須是你已安裝的 Python 3.12.14：
 
@@ -122,7 +158,7 @@ Move-Item -LiteralPath runs -Destination published-runs
 & ./.venv/Scripts/python.exe tools/finalize_report.py
 ```
 
-`run_formal.ps1` 不會自行跳過失敗 run。上面的完整重跑命令是使用方式，不是另一輪已執行的實驗。歴史 logs 中的 E:/ 與使用者路徑反映當時機器；新的 run 會從程式根目錄產生新路徑。
+`run_formal.ps1` 不會自行跳過失敗 run。上面的完整重跑命令是使用方式，不是另一輪已執行的實驗。歷史 logs 中的 E:/ 與使用者路徑反映當時機器；新的 run 會從程式根目錄產生新路徑。
 
 ### 單次執行與中斷恢復
 
@@ -136,28 +172,23 @@ Vanilla 使用 `train_teacher.py`；KD/CRD/CRD+KD 使用 `train_student.py`。CL
 
 checkpoint 保存學生、雙 projection heads、memories/Z、optimizer、RNG、loader generator、config、環境、來源 hash 與 epoch history。支援完整 epoch 邊界恢復；半個 epoch 會重算。`student_final.pt` 是推論權重，不能當訓練 resume。
 
-## 做過哪些驗證？
+## Repository 結構
 
-- 20 項不依賴 CIFAR 資料的語意／流程測試通過；部分測試需要已下載的教師權重。
-- 官方 CRD 與修補版固定輸入數值、梯度、memory 更新比對；兩種 τ 都有覆蓋。
-- exact positive、異類 negatives、全域 index、模型與 projection shapes、teacher BN 不變及 heads 更新。
-- KD scaling、LR 邊界、Z 只初始化一次、完整 RNG/optimizer checkpoint round-trip。
-- 正式 B64/K16384 GPU steps、真實 CIFAR smoke、教師全 test 評估與真實 epoch resume。
-- 最終 30 runs、7200 筆 epoch 紀錄、六組五 seeds、教師 checksum 與凍結 Python hash 查核。
+```text
+reproduction/       官方結構上的最小修補、訓練入口、測試與彙整
+reference/          固定版本官方原始碼（獨立來源，不修改）
+configs/            author_code / paper_tau / smoke 分開的設定
+runs/               設定、環境、逐 epoch metrics、status、events、曲線
+artifacts/          測試證據、環境鎖定、來源 manifest、console logs
+reports/            最終報告、查核與比較圖
+tools/              收尾報告工具；不屬於凍結訓練程式碼
+```
 
-訓練曾遭遇兩次非預期關機與一次主動暫停重開，均從最後完整 checkpoint 接續。Windows 事件不足以證明根因；不將關機歸咎於訓練或硬體。恢復事件保存在各 run 的 events.jsonl。
+本機 checkpoint、資料集、虛擬環境與中斷備份仍保留，但不放入 Git。Git 版本提供完整程式、設定及文字／圖表證據。30 runs 的完整 resume 與 student_final 權重另放在 [v1.0.0 Release](https://github.com/ChenBill900703/CRD-Reproduction/releases/tag/v1.0.0)，下載 formal-checkpoints.zip 與 SHA256SUMS.txt 核對後，在專案根目錄解壓。resume 仍需原環境與 config，跨路徑／硬體不保證直接接續。
 
-## 資源與範圍
-
-CRD 每 epoch 約 94–98 秒，一次 240 epochs 約 6.3 小時；框架記錄的 peak allocated memory 約 1.35 GiB，並非整張 GPU 的使用量。時間排除停機、初始化與 checkpoint I/O；不同硬體不能直接套用。
-
-未完成範圍：其他模型配對、ImageNet、linear transfer、跨模態、ensemble、Deep Mutual Learning 與完整消融。原 repository 也未提供所有論文實驗的完整入口。後續需另立設定與來源核對，不能用這 30 runs 宣稱整篇論文已完成。
-
-## 來源與授權
+## 參考資料
 
 - [論文：Contrastive Representation Distillation](https://arxiv.org/abs/1910.10699)，ICLR 2020；本次核對 v3。
 - [官方固定 commit](https://github.com/HobbitLong/RepDistiller/tree/b84f547c5db6a35318d4671d7d5c4de74c822403)。
 - 官方程式 BSD-2-Clause 授權與版權保留於 [LICENSE](LICENSE)；本專案包含其衍生修改，非作者官方 repository。
 - 論文 PDF、資料集與教師權重各依原來源授權，不因本 repository 程式授權而改變。
-
-
